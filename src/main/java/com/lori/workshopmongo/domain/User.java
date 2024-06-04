@@ -1,12 +1,18 @@
 package com.lori.workshopmongo.domain;
 
+import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.Document;
+
 import java.io.Serializable;
 import java.util.Objects;
 
+@Document //essa anotation é para indicar que essa sera uma das dbs do mongo
+//como essa classe tem o msm nome da minha db, não preciso alterar nada
 public class User implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
+    @Id
     private String id;
     private String name;
     private String email;
