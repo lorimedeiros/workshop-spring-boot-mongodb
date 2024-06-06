@@ -46,4 +46,11 @@ public class UserResource {
         //em outras palavras esse codigo vai retornar uma resposta vazia + cosigo 201 + localização do novo recurso criado
     }
 
+    @RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
+    public ResponseEntity<Void> delete(@PathVariable String id){
+        service.delete(id);
+
+        return ResponseEntity.noContent().build();
+    }
+
 }
