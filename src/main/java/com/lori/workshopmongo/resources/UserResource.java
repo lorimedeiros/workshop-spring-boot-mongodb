@@ -1,4 +1,4 @@
-package com.lori.workshopmongo.resource;
+package com.lori.workshopmongo.resources;
 
 import com.lori.workshopmongo.domain.Post;
 import com.lori.workshopmongo.domain.User;

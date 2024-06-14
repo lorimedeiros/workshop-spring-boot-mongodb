@@ -1,4 +1,4 @@
-package com.lori.workshopmongo.resource.exceptions;
+package com.lori.workshopmongo.resources.exceptions;
 
 import com.lori.workshopmongo.services.exception.ObjectNotFoundException;
 import jakarta.servlet.http.HttpServletRequest;
