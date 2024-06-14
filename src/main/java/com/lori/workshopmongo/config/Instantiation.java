@@ -3,6 +3,7 @@ package com.lori.workshopmongo.config;
 import com.lori.workshopmongo.domain.Post;
 import com.lori.workshopmongo.domain.User;
 import com.lori.workshopmongo.dto.AuthorDTO;
+import com.lori.workshopmongo.dto.CommentDTO;
 import com.lori.workshopmongo.repository.PostRepository;
 import com.lori.workshopmongo.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -42,6 +43,14 @@ public class Instantiation implements CommandLineRunner {
         Post pst1 = new Post(null, sdf.parse("12/06/2024"), "Feliz dia dos namorados!", "Feliz dia dos namorados, estou muito feliz com minha namorada.\n*foto do ps5*", new AuthorDTO(sonysta));
         Post pst2 = new Post(null, sdf.parse("12/06/2024"), "Como assim não comemoram dia dos solteiros!?", "Achei uma injustiça sem tamanho, solteiros também merecem um dia.", new AuthorDTO(lori));
         Post pst3 = new Post(null, sdf.parse("12/06/2024"), "Algo especial hoje?", "Nem sabia que hoje era uma data comemorativa, estava jogando genshin e me deparei com uma choradeira imensa no grupo.\n(Isso não foi uma indireta para Lori)", new AuthorDTO(pedro));
+
+        CommentDTO c1 = new CommentDTO("Muito linda a sua gatinha", sdf.parse("12/06/2024"), new AuthorDTO(lori));
+        CommentDTO c2 = new CommentDTO("Para de choro", sdf.parse("12/06/2024"), new AuthorDTO(pedro));
+        CommentDTO c3 = new CommentDTO("É pra mim né, seu safado", sdf.parse("12/06/2024"), new AuthorDTO(yves));
+
+        pst1.getComments().add(c1);
+        pst2.getComments().add(c2);
+        pst3.getComments().add(c3);
 
         postRepository.saveAll(Arrays.asList(pst1, pst2, pst3));
 
