@@ -4,20 +4,19 @@ import com.lori.workshopmongo.domain.User;
 
 import java.io.Serializable;
 
-public class UserDTO implements Serializable {
-    //São copiados todos os atributos da classe "original" (User) pois são as informações que serão usadas
+public class AuthorDTO implements Serializable {
     private static final long serialVersionUID = 1L;
+
+    //são colocados como atributos apenas as informeções que queremos usar
 
     private String id;
     private String name;
-    private String email;
 
-    public UserDTO(){}
+    public AuthorDTO(){}
 
-    public UserDTO(User obj){
+    public AuthorDTO(User obj){
         id = obj.getId();
         name = obj.getName();
-        email = obj.getEmail();
     }
 
     public String getId() {
@@ -34,14 +33,6 @@ public class UserDTO implements Serializable {
 
     public void setName(String name) {
         this.name = name;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
     }
 
 }
