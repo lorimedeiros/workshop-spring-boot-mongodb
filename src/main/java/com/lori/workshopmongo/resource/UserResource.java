@@ -1,5 +1,6 @@
 package com.lori.workshopmongo.resource;
 
+import com.lori.workshopmongo.domain.Post;
 import com.lori.workshopmongo.domain.User;
 import com.lori.workshopmongo.dto.UserDTO;
 import com.lori.workshopmongo.services.UserService;
@@ -60,6 +61,12 @@ public class UserResource {
         obj = service.update(obj);
 
         return ResponseEntity.noContent().build();
+    }
+
+    @RequestMapping(value = "/{id}/posts", method = RequestMethod.GET)
+    public ResponseEntity<List<Post>> findPosts(@PathVariable String id){
+        User obj = service.findById(id);
+        return ResponseEntity.ok().body(obj.getPosts()); //isso funciona pq já associamos user a posts naquela linha com o lazy
     }
 
 }
