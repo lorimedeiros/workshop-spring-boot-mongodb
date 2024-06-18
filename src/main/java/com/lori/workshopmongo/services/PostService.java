@@ -26,7 +26,6 @@ public class PostService {
     }
 
     public List<Post> fullSearch(String text, Date minDate, Date maxDate){
-        //vai ser feita uma gambiarra para arredondar a data máxima em um dia, isso pq as datas são armazenadas de 00:00, ou seja, pode dar ruim
         maxDate = new Date(maxDate.getTime() + 24 * 60 * 60 * 1000); //pq essa conta toda? pq a data é armazenada em milissegundos
         return repo.fullSearch(text, minDate, maxDate);
     }

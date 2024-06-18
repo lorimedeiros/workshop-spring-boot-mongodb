@@ -17,8 +17,7 @@ public class URL {
         }
     }
 
-    //metodo para converter data
-    public static Date convertDate(String textDate, Date defaultValue){ //o segundo parâmetro é uma data padrão caso a conversão falhe
+    public static Date convertDate(String textDate, Date defaultValue){
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
         sdf.setTimeZone(TimeZone.getTimeZone("GMT"));
         try {

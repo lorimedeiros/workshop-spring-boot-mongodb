@@ -10,9 +10,4 @@ public class WorkshopmongoApplication {
 		SpringApplication.run(WorkshopmongoApplication.class, args);
 	}
 
-	/*
-	http://localhost:8080/posts/fullsearch?text=especial&maxDate=2024-06-15
-	só dale isso no postman que ele vai retornar um post do pedroca
-	*/
-
 }
