@@ -5,7 +5,6 @@ import java.net.URLDecoder;
 
 public class URL {
 
-    //esse método irá passar a string para linguagem url
     public static String decodeParam(String text){
         try {
             return URLDecoder.decode(text, "UTF-8");

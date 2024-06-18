@@ -13,19 +13,16 @@ import java.util.List;
 @RequestMapping(value = "/posts")
 public class PostResource {
 
-    //o controlador acessa o serviço, o serviço, por sua vez, acessa o repository
     @Autowired
     private PostService service;
 
     @RequestMapping(value = "/{id}", method = RequestMethod.GET)
-    //esse codigo basicamente cria aquele caminho posts/valorDeUmId
-    public ResponseEntity<Post> findById(@PathVariable String id) { //esse @ é para indicar que esse valor é aquele {id} ali em cima
+    public ResponseEntity<Post> findById(@PathVariable String id) {
         Post obj = service.findById(id);
         return ResponseEntity.ok().body(obj);
     }
 
     @RequestMapping(value = "/titlesearch", method = RequestMethod.GET)
-    //esse codigo basicamente cria aquele caminho posts/valorDeUmId
     public ResponseEntity<List<Post>> findByTitle(@RequestParam(value = "text", defaultValue = "") String text) {
         text = URL.decodeParam(text);
         List<Post> list = service.findByTitle(text);

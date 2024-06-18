@@ -9,8 +9,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
-@Document //essa anotation é para indicar que essa sera uma das dbs do mongo
-//como essa classe tem o msm nome da minha db, não preciso alterar nada
+@Document
 public class User implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -20,7 +19,7 @@ public class User implements Serializable {
     private String name;
     private String email;
 
-    @DBRef(lazy = true) //esse lazy = true é para não carregar todos os posts ao carregar um usuário, isso aqui evita o capotamento do PC e só permite acessar posts quando forem explicitamente chamados
+    @DBRef(lazy = true)
     private List<Post> posts = new ArrayList<>();
 
     public User(){}

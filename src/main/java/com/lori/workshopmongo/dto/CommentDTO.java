@@ -4,13 +4,12 @@ import java.io.Serializable;
 import java.util.Date;
 
 public class CommentDTO implements Serializable {
-    //foi optado por não fazer um domain Comment pois (nessa ideia de negócio) comentários são simples e integrados ao post
 
     private static final long serialVersionUID = 1L;
 
     private String texto;
     private Date date;
-    private AuthorDTO author; //pois é a versão mais simples do user
+    private AuthorDTO author;
 
     public CommentDTO(){}
 

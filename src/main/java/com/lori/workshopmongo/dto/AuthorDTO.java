@@ -7,8 +7,6 @@ import java.io.Serializable;
 public class AuthorDTO implements Serializable {
     private static final long serialVersionUID = 1L;
 
-    //são colocados como atributos apenas as informeções que queremos usar
-
     private String id;
     private String name;
 

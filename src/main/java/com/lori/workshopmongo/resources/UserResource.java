@@ -17,34 +17,31 @@ import java.util.stream.Collectors;
 @RequestMapping(value = "/users")
 public class UserResource {
 
-    //o controlador acessa o serviço, o serviço, por sua vez, acessa o repository
     @Autowired
     private UserService service;
 
     @GetMapping
     public ResponseEntity<List<UserDTO>> findAll(){
         List <User> list = service.findAll();
-        List <UserDTO> listDTO = list.stream().map(x -> new UserDTO(x)).collect(Collectors.toList()); //essa linha aqui converte cada item da lista original para item da lista DTO
+        List <UserDTO> listDTO = list.stream().map(x -> new UserDTO(x)).collect(Collectors.toList());
         return ResponseEntity.ok().body(listDTO);
     }
 
 
-    @RequestMapping(value = "/{id}", method = RequestMethod.GET) //esse codigo basicamente cria aquele caminho users/valorDeUmId
-    public ResponseEntity<UserDTO> findById(@PathVariable String id){ //esse @ é para indicar que esse valor é aquele {id} ali em cima
+    @RequestMapping(value = "/{id}", method = RequestMethod.GET)
+    public ResponseEntity<UserDTO> findById(@PathVariable String id){
         User obj = service.findById(id);
 
         return ResponseEntity.ok().body(new UserDTO(obj));
     }
 
-    @RequestMapping(method = RequestMethod.POST) //Ou @PostMapping
+    @RequestMapping(method = RequestMethod.POST)
     public ResponseEntity<Void> insert(@RequestBody UserDTO objDTO){
         User obj = service.fromDTO(objDTO);
         obj = service.insert(obj);
 
         URI uri = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(obj.getId()).toUri();
-        //essa redação toda ai é pra pegar o endereço do novo objeto que for inserido
-        return ResponseEntity.created(uri).build(); //esse created retorna o código 201 que é o código resposta http qiando criado um novo recurso
-        //em outras palavras esse codigo vai retornar uma resposta vazia + cosigo 201 + localização do novo recurso criado
+        return ResponseEntity.created(uri).build();
     }
 
     @RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
@@ -66,7 +63,7 @@ public class UserResource {
     @RequestMapping(value = "/{id}/posts", method = RequestMethod.GET)
     public ResponseEntity<List<Post>> findPosts(@PathVariable String id){
         User obj = service.findById(id);
-        return ResponseEntity.ok().body(obj.getPosts()); //isso funciona pq já associamos user a posts naquela linha com o lazy
+        return ResponseEntity.ok().body(obj.getPosts());
     }
 
 }

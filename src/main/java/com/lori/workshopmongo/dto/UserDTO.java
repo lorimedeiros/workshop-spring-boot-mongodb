@@ -5,7 +5,6 @@ import com.lori.workshopmongo.domain.User;
 import java.io.Serializable;
 
 public class UserDTO implements Serializable {
-    //São copiados todos os atributos da classe "original" (User) pois são as informações que serão usadas
     private static final long serialVersionUID = 1L;
 
     private String id;

@@ -29,7 +29,7 @@ public class Instantiation implements CommandLineRunner {
         SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
         sdf.setTimeZone(TimeZone.getTimeZone("GMT"));
 
-        userRepository.deleteAll(); //isso aqui é necessário pois, como brinquei antes com o mongodb, já tem dados lá
+        userRepository.deleteAll();
         postRepository.deleteAll();
 
         User lori = new User(null, "Lori Medeiros", "lori@leromail.com");
@@ -38,7 +38,6 @@ public class Instantiation implements CommandLineRunner {
         User sonysta = new User(null, "Leandro Franklin", "sonysta@leromail.com");
 
         userRepository.saveAll(Arrays.asList(lori, yves, pedro, sonysta));
-        //detalhe que é preciso salvar primeiro os usuários para que eles tenham um id, se eu colocar essa linha la em baixo os ids ficarão nulos na referencia ao obj
 
         Post pst1 = new Post(null, sdf.parse("12/06/2024"), "Feliz dia dos namorados!", "Feliz dia dos namorados, estou muito feliz com minha namorada.\n*foto do ps5*", new AuthorDTO(sonysta));
         Post pst2 = new Post(null, sdf.parse("12/06/2024"), "Como assim não comemoram dia dos solteiros!?", "Achei uma injustiça sem tamanho, solteiros também merecem um dia.", new AuthorDTO(lori));
