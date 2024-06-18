@@ -11,10 +11,11 @@ import java.util.List;
 public interface PostRepository extends MongoRepository <Post, String> {
 //String pois é o tipo de dado que é o id do User
 
-    @Query("{ 'title': { $regex: ?0, $options: 'i' } }") //title(campo pelo qual queri efetur a busca), ?0(expressão regular; aquele primeiro parâmetro do método abaixo(title), se quisesse outro parâmetro ?1 ... ?n), i(options, esse i representa que vai ignorar maiuscula e minuscula)
+    @Query("{ 'title': { $regex: ?0, $options: 'i' } }")
     List <Post> searchTitle(String title);
 
+    //sim, ambos os métodos são a msm coisa, só escolher (lá no PostService) qual usar dentro do método de busca
+
     List<Post> findByTitleContainingIgnoreCase(String text);
-    //só essa declaração já faz com que o spring data monte a consulta
 
 }
